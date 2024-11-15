@@ -10,7 +10,7 @@ const PokemonList = () => {
       try {
         const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10");
         if (!response.ok) {
-          throw new Error("Failed to fetch Pokémon data");
+          throw new Error("Fallo al cargar datos");
         }
         const data = await response.json();
 
@@ -41,7 +41,7 @@ const PokemonList = () => {
 
   return (
     <div>
-      <h1>Pokémon List</h1>
+      <h1>Lista de Pokémon con imagen</h1>
       <ul style={{ listStyle: "none", padding: 0 }}>
         {pokemonList.map((pokemon) => (
           <li key={pokemon.id} style={{ marginBottom: "20px" }}>
@@ -52,7 +52,7 @@ const PokemonList = () => {
             />
             <h2>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
             <p><strong>Type:</strong> {pokemon.types.map(t => t.type.name).join(", ")}</p>
-            <p><strong>Base Stats:</strong> {pokemon.stats[0].base_stat} HP</p>
+            <p><strong>Base Stats:</strong> {pokemon.stats[0].base_stat} Vida</p>
           </li>
         ))}
       </ul>
